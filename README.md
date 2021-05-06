@@ -1,5 +1,5 @@
 # VAS Entry Reader
-Work in progress, still converting from MagicBand Reader
+Work in progress, still converting from MagicBand Reader.
 Use with Raspberry Pi to interface VAS devices to ticketing systems.  
 Fork of https://github.com/foolishmortalbuilders/magicbandreader
 
