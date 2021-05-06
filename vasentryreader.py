@@ -28,7 +28,7 @@ config = configobj.ConfigObj('settings.conf')
 print_band_id = bool(config['Settings']['print_band_id'])
 reverse_circle = bool(config['Settings']['reverse_circle'])
 ring_pixels = int(config['Settings']['ring_pixels'])
-mickey_pixels = int(config['Settings']['mickey_pixels'])
+symbol_pixels = int(config['Settings']['symbol_pixels'])
 
 COLORS = {
     "red" : (0,255,0),
@@ -71,7 +71,7 @@ pygame.init()
 class MagicBand(cli.CommandLineInterface):
     def __init__(self):
         self.RING_LIGHT_SIZE = 4
-        self.total_pixels = ring_pixels+mickey_pixels
+        self.total_pixels = ring_pixels+symbol_pixels
         self.ring_pixels = ring_pixels
         self.pixels = neopixel.NeoPixel(pixel_pin, self.total_pixels, brightness=1.0, auto_write=False, pixel_order=neopixel.RGB)
         self.rdwr_commands = { }
@@ -166,7 +166,7 @@ class MagicBand(cli.CommandLineInterface):
            print(response)
 
         # All lights on
-        self.do_lights_on_fade(COLORS[sequence.get('color_mouse')])
+        self.do_lights_on_fade(COLORS[sequence.get('color_symbol')])
         time.sleep(int(sequence.get('hold_seconds')))
         self.do_lights_off_fade() 
         self.pixels.brightness = 1.0
